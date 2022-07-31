@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Banner from '../../components/Banner'
 import Footer from '../../components/Footer'
@@ -6,6 +6,8 @@ import Card from '../../components/Card'
 import data from '../../data/data.json'
 import styled from 'styled-components'
 import colors from '../../style/colors'
+import { device } from '../../style/size'
+import Loader from '../../components/Loader'
 
 const GalleryDiv = styled.div`
     margin: 5%;
@@ -15,16 +17,31 @@ const GalleryDiv = styled.div`
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 15px;
-    @media (max-width: 767px) {
+    @media ${device.mobile} {
         display: flex;
         flex-direction: column;
     }
+    @media ${device.tabletS} and ${device.tabletL} {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 15px;
+    }
 `
 export default function Home({ page }) {
+    const [isLoading, setisLoading] = useState(true)
+    
+    useEffect(() => {
+        setTimeout(() => {
+          setisLoading(false)
+        }, 1000);
+      }, []);
+    
     return (
         <Fragment>
             <Banner page={page} />
-            <GalleryDiv>
+            {isLoading ? (<Loader/>) :
+                (
+                <GalleryDiv>
                 {data.map((dat, index) => (
                     <Link
                         key={`${index}-${dat.id}`}
@@ -40,7 +57,9 @@ export default function Home({ page }) {
                         />
                     </Link>
                 ))}
-            </GalleryDiv>
+                </GalleryDiv>
+                )}
+            
             <Footer fSwitch={true} />
         </Fragment>
     )

@@ -1,3 +1,4 @@
+import { Fragment } from 'react'
 import styled, { keyframes } from 'styled-components'
 import colors from '../../style/colors'
 
@@ -11,7 +12,7 @@ const rotate = keyframes`
   }
 `
 
-const Loader = styled.div`
+const Load = styled.div`
     padding: 10px;
     border: 6px solid ${colors.primary};
     border-bottom-color: transparent;
@@ -20,5 +21,21 @@ const Loader = styled.div`
     height: 0;
     width: 0;
 `
+const Container= styled.div`
+  width:100%;
+  height:200px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+`
 
-export default Loader
+export default function Loader() {
+  return (
+    <Fragment>
+    <Container>
+      <Load/>
+    </Container>
+    </Fragment>
+  )
+}
+

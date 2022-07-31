@@ -3,6 +3,7 @@ import { Fragment } from 'react'
 import { StyledLink } from '../../style/Atoms'
 import logo from '../../assets/LOGO.png'
 import styled from 'styled-components'
+import { device } from '../../style/size'
 
 const NavContainer = styled.div`
     display: flex;
@@ -12,9 +13,15 @@ const NavContainer = styled.div`
     margin: 2%;
 `
 const ImgLogo = styled.img`
-    @media (max-width: 767px) {
+    @media ${device.tabletL} {
         width: 140px;
     }
+`
+const LinkContainter = styled.div`
+    margin-right:2%;
+    @media ${device.xxs} {
+        display:flex;
+        flex-direction:column;}
 `
 
 export default function Header() {
@@ -22,10 +29,10 @@ export default function Header() {
         <Fragment>
             <NavContainer>
                 <ImgLogo src={logo} alt="kasa logo" />
-                <div>
+                <LinkContainter>
                     <StyledLink to="/">Accueil</StyledLink>
                     <StyledLink to="/about">A Propos</StyledLink>
-                </div>
+                </LinkContainter>
             </NavContainer>
         </Fragment>
     )

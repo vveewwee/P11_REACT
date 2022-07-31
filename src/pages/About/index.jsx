@@ -6,7 +6,13 @@ import about from '../../data/about.json';
 import styled from 'styled-components';
 
 const Container = styled.div`
-    width: 100%;
+min-height:400px;
+display:flex;
+align-items:center;
+justify-content:center;
+`
+const ContainerDropdown = styled.div`
+    width: 90%;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -18,8 +24,8 @@ export default function About({ page }) {
     return (
         <Fragment>
             <Banner page={page} />
-            <div style={{ minHeight: '400px' }}>
-                <Container>
+            <Container>
+                <ContainerDropdown>
                     {about.map((words, index) => (
                         <Dropdown
                             key={`${index}-${words.line}`}
@@ -27,9 +33,9 @@ export default function About({ page }) {
                             text={words.text}
                         />
                     ))}
+                </ContainerDropdown>
                 </Container>
                 <Footer fSwitch={true} />
-            </div>
         </Fragment>
     )
 }

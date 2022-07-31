@@ -7,6 +7,7 @@ import data from '../../data/data.json'
 import colors from '../../style/colors'
 import Carousel from '../../components/Carousel'
 import Rating from '../../components/Rating'
+import { device } from '../../style/size'
 
 const DivRow = styled.div`
     display: flex;
@@ -15,13 +16,32 @@ const DivRow = styled.div`
 const DivCol = styled.div`
     display: flex;
     flex-direction: column;
+    @media ${device.mobile} {
+        width:90%;
+    }
+    
+`
+const DivColHost = styled.div`
+    display: flex;
+    flex-direction: column;
+    margin:2%;
+    @media ${device.tabletL} {
+        flex-direction:row-reverse;
+        justify-content:space-between;
+        align-items:center;
+        margin-top:2%;
+        width:90%;
+    }
 `
 const ImgContainer = styled.div`
     width: 95%;
-    height: 400px;
+    height: 100vh;
     object-fit: cover;
     border-radius: 15px;
     padding: 2%;
+    @media ${device.tabletL} {
+        height:60vh;
+    }
 `
 
 const TitleContainer = styled.div`
@@ -30,26 +50,42 @@ const TitleContainer = styled.div`
     align-items: center;
     justify-content: space-between;
     padding: 2%;
+    @media ${device.tabletL} {
+        display:flex;
+        flex-direction:column;
+    }
 `
 
 const DetailsContainer = styled.div`
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 2%;
+    width:100%;
+    display:flex;
+    align-items:flex-start;
+    justify-content:center;
+    @media ${device.tabletL} {
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+    }
 `
 const TagContainer = styled.div`
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
+    max-height:64px;
 `
 
 const Tag = styled.div`
-    padding: 2%;
+    padding: 1%;
+    padding-right:6%;
+    padding-left:6%;
     margin: 2%;
     background-color: ${colors.primary};
-    border-radius: 25px;
+    border-radius: 13px;
     color: white;
-    font-size: 18px;
+    font-size: 1em;
     font-weight: 300;
+    min-width:60px;
+    text-align:center;
 `
 
 const OwnerContainer = styled.div`
@@ -57,7 +93,9 @@ const OwnerContainer = styled.div`
     flex-direction: row;
 `
 
-const OwnerName = styled.div``
+const OwnerName = styled.div`
+text-justify:center;`
+
 const OwnerImgDiv = styled.div`
     border-radius: 50%;
     width: 50px;
@@ -72,6 +110,8 @@ const OwnerImg = styled.img`
 
 const H1 = styled.h1`
     margin-bottom: 1%;
+    font-weight:400;
+    letter-spacing:0.5px;
 `
 
 export default function Housing() {
@@ -80,6 +120,7 @@ export default function Housing() {
 
     return (
         <Fragment>
+            <main>
             <ImgContainer>
                 <Carousel images={info.pictures} text={info.title} />
             </ImgContainer>
@@ -93,15 +134,12 @@ export default function Housing() {
                         ))}
                     </TagContainer>
                 </DivCol>
-                <DivCol
-                    style={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                        margin: '2%',
-                    }}
-                >
+                <DivColHost>
                     <OwnerContainer>
-                        <OwnerName>{info.host.name}</OwnerName>
+                        <OwnerName>
+                            <p key={`${info.name}`}>{info.host.name}
+                            </p>
+                            </OwnerName>
                         <OwnerImgDiv>
                             <OwnerImg
                                 key={`${info.host}-${info.id}`}
@@ -112,12 +150,13 @@ export default function Housing() {
                     <DivRow>
                         <Rating rate={parseInt(info.rating)} />
                     </DivRow>
-                </DivCol>
+                </DivColHost>
             </TitleContainer>
             <DetailsContainer>
                 <Dropdown line={'Description'} text={info.description} />
                 <Dropdown line={'Équipements'} text={info.equipments} />
             </DetailsContainer>
+            </main>
             <Footer fSwitch={true} />
         </Fragment>
     )

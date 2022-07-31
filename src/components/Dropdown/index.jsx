@@ -20,8 +20,8 @@ const DropdownLine = styled.p`
     font-weight: 300;
 `
 const DropdownContainer = styled.span`
-    margin-top: -10px;
-    padding-top: 3%;
+    margin-top: -22px;
+    padding-top: 15px;
     margin-left: 2%;
     width: 96%;
     background-color: ${colors.background};
@@ -35,7 +35,7 @@ const DropdownText = styled.p`
 const FlexCol = styled.div`
     display: flex;
     flex-flow: column;
-    width: 60%;
+    width: 90%;
 `
 export default function Dropdown({ line, text }) {
     const [show, setshow] = useState(false)

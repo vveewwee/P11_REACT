@@ -2,6 +2,7 @@ import React, { Fragment, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons'
 import styled from 'styled-components'
+import { device } from '../../style/size'
 
 const Img = styled.img`
     width: 100%;
@@ -20,6 +21,12 @@ const Arrows = styled.div`
     top: -240px;
     color: white;
     padding: 2%;
+    @media ${device.mobile} {
+        top:-150px;
+    }
+    @media ${device.tabletS} and ${device.tabletL} {
+       top:-165px;
+
 `
 
 export default function Carousel({ images, text }) {

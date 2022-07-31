@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import home_photo from '../../assets/home_page.png'
 import about_photo from '../../assets/about_page.png'
+import { device } from '../../style/size'
 
 const BannerWrapper = styled.div`
     display: flex;
@@ -20,6 +21,8 @@ const BannerDivHome = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    filter:brightness(0.9);
+    height:200px;
 `
 
 const BannerDivAbout = styled.div`
@@ -37,8 +40,14 @@ const BannerDivAbout = styled.div`
 const BannerMessageHome = styled.p`
     color: white;
     font-size: 3em;
-    font-weigth: 500;
+    font-weigth: 400;
     font-style: normal;
+    letter-spacing:0.5px;
+    @media ${device.tabletL} {
+       font-weight:300;
+       font-size:2em;
+       margin-left:1%;
+    }
 `
 export default function Banner({ page }) {
     return (
