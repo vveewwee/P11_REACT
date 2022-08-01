@@ -1,5 +1,4 @@
 import React from 'react'
-import { Fragment } from 'react'
 import { StyledLink } from '../../style/Atoms'
 import logo from '../../assets/LOGO.png'
 import styled from 'styled-components'
@@ -26,7 +25,7 @@ const LinkContainter = styled.div`
 
 export default function Header() {
     return (
-        <Fragment>
+        <header>
             <NavContainer>
                 <ImgLogo src={logo} alt="kasa logo" />
                 <LinkContainter>
@@ -34,6 +33,6 @@ export default function Header() {
                     <StyledLink to="/about">A Propos</StyledLink>
                 </LinkContainter>
             </NavContainer>
-        </Fragment>
+        </header>
     )
 }

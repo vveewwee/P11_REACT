@@ -17,33 +17,43 @@ const Arrows = styled.div`
     flex-direction: row;
     justify-content: space-between;
     font-size: 4em;
-    position: relative;
-    top: -240px;
+    position: absolute;
+    top: 44%;
     color: white;
     padding: 2%;
+    width:96%;
     @media ${device.mobile} {
-        top:-150px;
+        top:46%;
     }
-    @media ${device.tabletS} and ${device.tabletL} {
-       top:-165px;
 
 `
 
+const Container= styled.div`
+margin-left:auto;
+margin-right:auto;
+max-width:1200px;
+position:relative;
+height:500px;
+`
+
 export default function Carousel({ images, text }) {
-    const [index, setIndex] = useState(0)
-    let current = index
+    const [index, setIndex] = useState(0);
+    let current = index;
 
     function increaseIndex(current) {
         current === images.length - 1 ? (current = 0) : (current = index + 1)
         setIndex(current)
+        console.log("increase:current:", current)
     }
     function decreaseIndex(current) {
         current === 0 ? (current = images.length - 1) : (current = index - 1)
         setIndex(current)
+        console.log("decrease:current:", current)
     }
-
+ 
     return (
         <Fragment>
+            <Container>
             <Img
                 key={`${images[index]}-${index}`}
                 src={images[index]}
@@ -63,6 +73,7 @@ export default function Carousel({ images, text }) {
                     />
                 </div>
             </Arrows>
+            </Container>
         </Fragment>
     )
 }

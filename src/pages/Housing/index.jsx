@@ -34,13 +34,11 @@ const DivColHost = styled.div`
     }
 `
 const ImgContainer = styled.div`
-    width: 95%;
-    height: 100vh;
     object-fit: cover;
     border-radius: 15px;
     padding: 2%;
     @media ${device.tabletL} {
-        height:60vh;
+        height:65vh;
     }
 `
 
@@ -100,6 +98,7 @@ const OwnerImgDiv = styled.div`
     border-radius: 50%;
     width: 50px;
     height: 50px;
+    margin: 5px;
 `
 const OwnerImg = styled.img`
     width: 100%;
@@ -113,14 +112,20 @@ const H1 = styled.h1`
     font-weight:400;
     letter-spacing:0.5px;
 `
-
+const MainContainer=styled.main`
+@media ${device.desktop} {
+    margin-right:auto;
+margin-left:auto;
+max-width:1200px;
+}
+`
 export default function Housing() {
     const { id } = useParams()
     const info = data.find((line) => line.id === id)
 
     return (
         <Fragment>
-            <main>
+            <MainContainer>
             <ImgContainer>
                 <Carousel images={info.pictures} text={info.title} />
             </ImgContainer>
@@ -156,7 +161,7 @@ export default function Housing() {
                 <Dropdown line={'Description'} text={info.description} />
                 <Dropdown line={'Équipements'} text={info.equipments} />
             </DetailsContainer>
-            </main>
+            </MainContainer>
             <Footer fSwitch={true} />
         </Fragment>
     )

@@ -1,5 +1,4 @@
 import React from 'react'
-import { Fragment } from 'react'
 import logo_white from '../../assets/LOGO_white.png'
 import styled from 'styled-components'
 import { StyledLink } from '../../style/Atoms'
@@ -26,7 +25,7 @@ const ErrorContainer = styled.div`
 
 export default function Footer({ fSwitch }) {
     return (
-        <Fragment>
+        <footer>
             {fSwitch ? (
                 <FooterDiv>
                     <img src={logo_white} alt="kasa logo" />
@@ -39,6 +38,6 @@ export default function Footer({ fSwitch }) {
                     </StyledLink>
                 </ErrorContainer>
             )}
-        </Fragment>
+        </footer>
     )
 }

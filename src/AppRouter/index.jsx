@@ -1,9 +1,9 @@
 import React, { Fragment } from 'react'
 import { Route, Routes } from 'react-router-dom'
-import Home from '../../pages/Home'
-import About from '../../pages/About'
-import Housing from '../../pages/Housing'
-import Error from '../../pages/Error'
+import Home from '../pages/Home'
+import About from '../pages/About'
+import Housing from '../pages/Housing'
+import Error from '../pages/Error'
 
 export default function AppRouter() {
     return (

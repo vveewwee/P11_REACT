@@ -4,12 +4,16 @@ import Banner from '../../components/Banner';
 import Dropdown from '../../components/Dropdown';
 import about from '../../data/about.json';
 import styled from 'styled-components';
+import { device } from '../../style/size';
 
 const Container = styled.div`
 min-height:400px;
 display:flex;
 align-items:center;
 justify-content:center;
+@media ${device.mobile} {
+  min-height:260px;
+}
 `
 const ContainerDropdown = styled.div`
     width: 90%;
@@ -19,10 +23,17 @@ const ContainerDropdown = styled.div`
     justify-content: center;
     align-items: center;
 `
+const MainContainer=styled.main`
+@media ${device.desktop} {
+    margin-right:auto;
+margin-left:auto;
+max-width:1200px;
+}`
 
 export default function About({ page }) {
     return (
         <Fragment>
+            <MainContainer>
             <Banner page={page} />
             <Container>
                 <ContainerDropdown>
@@ -35,7 +46,8 @@ export default function About({ page }) {
                     ))}
                 </ContainerDropdown>
                 </Container>
-                <Footer fSwitch={true} />
+            </MainContainer>
+            <Footer fSwitch={true} />
         </Fragment>
     )
 }

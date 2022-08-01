@@ -27,6 +27,14 @@ const GalleryDiv = styled.div`
         grid-gap: 15px;
     }
 `
+
+const MainContainer=styled.main`
+@media ${device.desktop} {
+    margin-right:auto;
+margin-left:auto;
+max-width:1200px;
+}
+`
 export default function Home({ page }) {
     const [isLoading, setisLoading] = useState(true)
     
@@ -38,9 +46,10 @@ export default function Home({ page }) {
     
     return (
         <Fragment>
-            <Banner page={page} />
-            {isLoading ? (<Loader/>) :
-                (
+            <MainContainer>
+                <Banner page={page} />
+                {isLoading ? (<Loader/>) :
+                    (
                 <GalleryDiv>
                 {data.map((dat, index) => (
                     <Link
@@ -59,8 +68,8 @@ export default function Home({ page }) {
                 ))}
                 </GalleryDiv>
                 )}
-            
+             </MainContainer>
             <Footer fSwitch={true} />
-        </Fragment>
+            </Fragment>
     )
 }
