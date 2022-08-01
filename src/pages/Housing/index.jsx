@@ -37,9 +37,6 @@ const ImgContainer = styled.div`
     object-fit: cover;
     border-radius: 15px;
     padding: 2%;
-    @media ${device.tabletL} {
-        height:65vh;
-    }
 `
 
 const TitleContainer = styled.div`
