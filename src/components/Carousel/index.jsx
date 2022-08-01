@@ -59,6 +59,7 @@ export default function Carousel({ images, text }) {
                 src={images[index]}
                 alt={text}
             />
+            {images.length > 1 ? (
             <Arrows>
                 <div onClick={() => decreaseIndex(current)}>
                     <FontAwesomeIcon
@@ -72,7 +73,7 @@ export default function Carousel({ images, text }) {
                         key={`${index}-'faAngleRight'`}
                     />
                 </div>
-            </Arrows>
+            </Arrows>) : null }
             </Container>
         </Fragment>
     )
