@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyledLink } from '../../style/Atoms'
+import { StyledLink, LogoLink} from '../../style/Atoms'
 import logo from '../../assets/LOGO.png'
 import styled from 'styled-components'
 import { device } from '../../style/size'
@@ -27,7 +27,9 @@ export default function Header() {
     return (
         <header>
             <NavContainer>
-                <ImgLogo src={logo} alt="kasa logo" />
+                <LogoLink to="/">
+                    <ImgLogo src={logo} alt="kasa logo" />
+                </LogoLink>
                 <LinkContainter>
                     <StyledLink to="/">Accueil</StyledLink>
                     <StyledLink to="/about">A Propos</StyledLink>

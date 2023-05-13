@@ -17,3 +17,7 @@ export const StyledLink = styled(Link)`
     }
 
 `
+
+export const LogoLink = styled(Link)`
+    text-decoration: none;
+`
